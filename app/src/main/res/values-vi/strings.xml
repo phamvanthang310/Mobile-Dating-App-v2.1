@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dating App</string>
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_profile">Quản lý tài khoản</string>
+    <string name="action_settings">Thiết lập</string>
+    <string name="nav_logout">Đăng xuất</string>
+    <string-array name="sliding_tab_titles">
+        <item>Xung quanh</item>
+        <item>Bạn bè</item>
+        <item>Trò chuyện</item>
+    </string-array>
+    <string name="nav_setting">Thiết lập</string>
+
+</resources>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name" translatable="false">Dating App</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_logout">Logout</string>
+    <string-array name="sliding_tab_titles">
+        <item>Nearby</item>
+        <item>Friend List</item>
+        <item>Chat</item>
+    </string-array>
+    <string name="nav_setting">Setting</string>
+
+
+</resources>
