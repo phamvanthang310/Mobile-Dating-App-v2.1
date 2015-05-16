@@ -1,4 +1,4 @@
-package com.example.thang.mobile_dating_app_v20.SlidingTab;
+package com.example.thang.mobile_dating_app_v20.Activity;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.thang.mobile_dating_app_v20.R;
+import com.example.thang.mobile_dating_app_v20.SlidingTab.Tab1;
+import com.example.thang.mobile_dating_app_v20.SlidingTab.Tab2;
+import com.example.thang.mobile_dating_app_v20.SlidingTab.Tab3;
 
 /**
  * Created by Thang on 5/15/2015.
@@ -14,7 +17,7 @@ import com.example.thang.mobile_dating_app_v20.R;
 public class ViewPagerAdapter extends FragmentStatePagerAdapter{
     String[] title = {"a","b","c"};
     private int[] tabIcon = {
-            R.drawable.ic_location_history,
+            R.drawable.ic_location_history_black,
             R.drawable.ic_people_black,
             R.drawable.ic_chat_black
     };
