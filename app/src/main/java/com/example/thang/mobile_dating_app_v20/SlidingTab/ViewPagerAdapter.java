@@ -1,17 +1,28 @@
 package com.example.thang.mobile_dating_app_v20.SlidingTab;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.thang.mobile_dating_app_v20.R;
+
 /**
  * Created by Thang on 5/15/2015.
  */
-public class ViewPagerAdapter extends FragmentStatePagerAdapter {
-    String title[];
-    public ViewPagerAdapter(FragmentManager fm, String mTitle[]){
+public class ViewPagerAdapter extends FragmentStatePagerAdapter{
+    String[] title = {"a","b","c"};
+    private int[] tabIcon = {
+            R.drawable.ic_location_history,
+            R.drawable.ic_people_black,
+            R.drawable.ic_chat_black
+    };
+    private Context context;
+
+    public ViewPagerAdapter(FragmentManager fm, Context context){
         super(fm);
-        this.title = mTitle;
+        this.context = context;
     }
     @Override
     public Fragment getItem(int position) {
@@ -26,11 +37,15 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return title.length;
+        return tabIcon.length;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         return title[position];
+    }
+
+    public Drawable getIcon(int position){
+        return context.getResources().getDrawable(tabIcon[position]);
     }
 }

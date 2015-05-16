@@ -27,4 +27,5 @@ dependencies {
         transitive = true
     }
     compile 'com.getbase:floatingactionbutton:1.9.0'
+    compile 'it.neokree:MaterialTabs:0.11'
 }

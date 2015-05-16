@@ -16,36 +16,46 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import it.neokree.materialtabs.MaterialTab;
+import it.neokree.materialtabs.MaterialTabHost;
+import it.neokree.materialtabs.MaterialTabListener;
+
 /**
  * Created by Thang on 5/15/2015.
  */
-public class Home extends Fragment {
+public class Home extends Fragment implements MaterialTabListener{
     ViewPager pager;
     ViewPagerAdapter adapter;
-    SlidingTabLayout tabs;
-    String titles[];
+    MaterialTabHost tabs;
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup v =(ViewGroup)inflater.inflate(R.layout.homefragment,container,false);
+        ViewGroup v = (ViewGroup) inflater.inflate(R.layout.homefragment, container, false);
         ActionBar toolbar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         //View v = inflater.inflate(R.layout.homefragment,container,false);
 
-        titles = getResources().getStringArray(R.array.sliding_tab_titles);
-        adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager(),titles);
+        tabs = (MaterialTabHost) v.findViewById(R.id.materialTabHost);
+        adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager(), getActivity());
 
-        pager = (ViewPager)v.findViewById(R.id.pager);
+        pager = (ViewPager) v.findViewById(R.id.pager);
         pager.setAdapter(adapter);
-
-        tabs = (SlidingTabLayout) v.findViewById(R.id.tabs);
-        tabs.setDistributeEvenly(true);
-        tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+        pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
-            public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.AccentColor);
+            public void onPageSelected(int position) {
+                tabs.setSelectedNavigationItem(position);
             }
         });
-        tabs.setViewPager(pager);
+
+        for (int i = 0; i < adapter.getCount(); i++) {
+            tabs.addTab(
+                    tabs.newTab()
+                            .setIcon(adapter.getIcon(i))
+                            .setTabListener(this)
+            );
+        }
+
 
         return v;
     }
@@ -66,5 +76,20 @@ public class Home extends Fragment {
             Toolbar appbar = (Toolbar) getActivity().findViewById(R.id.tool_bar);
             appbar.setElevation((int) getResources().getDimension(R.dimen.toolbar_elevation));
         }
+    }
+
+    @Override
+    public void onTabSelected(MaterialTab materialTab) {
+        pager.setCurrentItem(materialTab.getPosition());
+    }
+
+    @Override
+    public void onTabReselected(MaterialTab materialTab) {
+
+    }
+
+    @Override
+    public void onTabUnselected(MaterialTab materialTab) {
+
     }
 }
